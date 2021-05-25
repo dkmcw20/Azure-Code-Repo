@@ -47,7 +47,7 @@ $sourceOSDisk = Get-AzDisk -ResourceGroupName $resourceGroup -DiskName $VM.Stora
 #! Create the managed disk configuration
 Write-Verbose "Create the managed disk configuration..."
 $diskConfig = New-AzDiskConfig -SkuName $sourceOSDisk.Sku.Name -Location $VM.Location `
-    -DiskSizeGB $vm.StorageProfile.OsDisk.DiskSizeGB -SourceResourceId $sourceOSDisk.Id -CreateOption Copy
+    -DiskSizeGB $sourceOSDisk.DiskSizeGB -SourceResourceId $sourceOSDisk.Id -CreateOption Copy
 
 #! Create the new disk
 Write-Verbose "Create the new OS disk..."
